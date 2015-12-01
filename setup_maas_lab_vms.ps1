@@ -58,7 +58,7 @@ $s2dProxy = New-LabVM $s2dProxyVMName 2 1GB 2GB $true 20GB $vmSwitchName $mgmtVl
 
 $services = New-LabVM $servicesVMName 4 5GB $null $false 100GB $vmSwitchName $mgmtVlan $true On $false
 # Data
-$services | Add-VMNetworkAdapter -SwitchName $vmDataSwitchName
+$services | Add-VMNetworkAdapter -SwitchName $vmDataSwitchName -PassThru | Set-VMNetworkAdapter -MacAddressSpoofing On
 # External
 $services | Add-VMNetworkAdapter -SwitchName $vmSwitchName
 
